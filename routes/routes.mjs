@@ -18,7 +18,7 @@ route.post("/addEmployee", async (request, response) => {
         response.status(200).json(savedEmp);
         console.log("Employee Added : " + savedEmp);
     }catch(error){
-        response.status(500).json({message : error.message})
+        response.status(500).json({message : error.message});
     }
 })
 
@@ -27,6 +27,7 @@ route.get("/getEmployee", async (request, response) =>{
     try{
         const emp = await Employee.find();
         response.json(emp);
+        console.log("List of Employees");
         console.log(emp);
     }catch(error){
         response.status(500).json({message : error.message});
@@ -39,6 +40,7 @@ route.get("/getEmployee/:id", async (request, response) =>{
         const id = request.params.id;
         const emp = await Employee.findById(id);
         response.json(emp);
+        console.log("Employee with id : " + id);
         console.log(emp);
     }catch(error){
         response.status(500).json({message : error.message});
@@ -53,7 +55,8 @@ route.patch("/updateEmployee/:id", async (request, response) => {
         const options = {new : true};
         const result = await Employee.findByIdAndUpdate(id, updatedEmp, options);
         response.send(result);
-        console.log(result + " Updated Successfully")
+        console.log("Updated Employee");
+        console.log(result + " Updated Successfully");
     }catch(error){
         response.status(500).json({message : error.message});
     }
@@ -65,6 +68,7 @@ route.delete("/deleteEmployee/:id", async (request, response) => {
         const id = request.params.id;
         const empDelete = await Employee.findByIdAndRemove(id);
         response.send(empDelete);
+        console.log("Deleted Employee");
         console.log(empDelete + " Deleted successfully");
     }catch(error){
         response.status(500).json({message : error.message});
