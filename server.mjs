@@ -1,6 +1,6 @@
 import express from "express";
 import dbConnect from "./model/dbConnect.mjs";
-import rotes from "./routes/routes.mjs";
+import routes from "./routes/routes.mjs";
 
 const app = express();
 const port = 4040;
