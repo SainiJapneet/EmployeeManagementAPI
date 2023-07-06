@@ -15,6 +15,9 @@ const employeeSchema = new mongoose.Schema({
     designation:{
         type: String,
     },
+    salary:{
+        type: Number,
+    },
     email:{
         type: String,
         unique: [true,"Email must be unique"]
